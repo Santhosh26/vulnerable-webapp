@@ -30,12 +30,20 @@ public class VulnerableController {
         String query = "SELECT * FROM users WHERE id = '" + id + "'";
         return jdbcTemplate.queryForObject(query, String.class);
     }
-    
+    private boolean isValidHostname(String host){
+        return host.matches("^[a-zA-Z0-9.-]+$");
+    }
     // 2. Command Injection vulnerability (CWE-78)
     @GetMapping("/ping")
     public String ping(@RequestParam String host) throws IOException {
+        if (!isValidHostname(host))
+        {
+            throw new IllegalArgumentException("Invalid Hostname Detected, Probably a hack attempt");
+        }
         String command = "ping -c 1 " + host;
-        Process process = Runtime.getRuntime().exec(command);
+        Process process = new ProcessBuilder(command).start();
+
+
         
         BufferedReader reader = new BufferedReader(
             new InputStreamReader(process.getInputStream())
@@ -47,7 +55,7 @@ public class VulnerableController {
         }
         return output.toString();
     }
-    
+
     // 3. Path Traversal vulnerability (CWE-22)
     @GetMapping("/file")
     public String readFile(@RequestParam String filename) throws IOException {
