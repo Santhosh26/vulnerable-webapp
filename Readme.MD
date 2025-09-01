@@ -1,1 +1,2 @@
-This is a vulnerable java project
+This is a vulnerable java project.
+new changes
