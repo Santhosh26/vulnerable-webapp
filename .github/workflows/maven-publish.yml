@@ -1,0 +1,54 @@
+# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
+# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
+
+name: Application Security
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:    
+      - name: Check out source code
+        uses: actions/checkout@v4  
+      - name: Run ScanCentral SAST & Debricked scan
+        uses: fortify/github-action@v2
+        with:
+          sast-scan: true
+          debricked-sca-scan: false
+        env:
+          SSC_URL: "http://52.67.113.58:8080/ssc"
+          SSC_TOKEN: "ZDNhYjY3NmYtMzg0Ny00ZTY5LWFmMmUtOGRmNmIyODEwMTAx"
+          SC_SAST_TOKEN: "secret"
+          # SSC_LOGIN_EXTRA_OPTS: --socket-timeout=60s
+          # DEBRICKED_TOKEN: ${{secrets.DEBRICKED_TOKEN}}
+          SSC_APPVERSION: "01vulnerableapp:dev"
+          DO_SETUP: true
+          SETUP_ACTION: https://scm.my.org/shared-repos/fcli-actions/setup.yaml
+          SETUP_EXTRA_OPTS: --on-unsigned=ignore
+          SC_CLIENT_VERSION: 24.4.1
+          # DO_PACKAGE_DEBUG: true
+          PACKAGE_EXTRA_OPTS: -oss -bt mvn
+          SC_SAST_SENSOR_VERSION: 24.4.1
+          # EXTRA_SC_SAST_SCAN_OPTS: 
+          # DO_WAIT: true
+          # DO_POLICY_CHECK: true
+          # POLICY_CHECK_ACTION: https://scm.my.org/shared-repos/fcli-actions/check-policy.yaml
+          # POLICY_CHECK_EXTRA_OPTS: --on-unsigned=ignore
+          # DO_JOB_SUMMARY: true
+          # JOB_SUMMARY_ACTION: https://scm.my.org/shared-repos/fcli-actions/job-summary.yaml
+          # JOB_SUMMARY_EXTRA_OPTS: --on-unsigned=ignore
+          # DO_PR_COMMENT: true
+          # PR_COMMENT_ACTION: https://scm.my.org/shared-repos/fcli-actions/github-pr-comment.yaml
+          # PR_COMMENT_EXTRA_OPTS: --on-unsigned=ignore
+          # DO_EXPORT: true
+          # EXPORT_ACTION: https://scm.my.org/shared-repos/fcli-actions/github-sast-report.yaml
+          # EXPORT_EXTRA_OPTS: --on-unsigned=ignore
+          # TOOL_DEFINITIONS: https://ftfy.mycompany.com/tool-definitions/v1/tool-definitions.yaml.zip
