@@ -31,9 +31,9 @@ jobs:
           # SSC_LOGIN_EXTRA_OPTS: --socket-timeout=60s
           # DEBRICKED_TOKEN: ${{secrets.DEBRICKED_TOKEN}}
           SSC_APPVERSION: "01vulnerableapp:dev"
-          DO_SETUP: true
-          SETUP_ACTION: https://scm.my.org/shared-repos/fcli-actions/setup.yaml
-          SETUP_EXTRA_OPTS: --on-unsigned=ignore
+          #DO_SETUP: true
+          #SETUP_ACTION: https://scm.my.org/shared-repos/fcli-actions/setup.yaml
+          #SETUP_EXTRA_OPTS: --on-unsigned=ignore
           SC_CLIENT_VERSION: 24.4.1
           # DO_PACKAGE_DEBUG: true
           PACKAGE_EXTRA_OPTS: -oss -bt mvn
