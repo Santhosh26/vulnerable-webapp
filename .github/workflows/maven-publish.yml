@@ -29,7 +29,7 @@ jobs:
           SSC_TOKEN: "ZDNhYjY3NmYtMzg0Ny00ZTY5LWFmMmUtOGRmNmIyODEwMTAx"
           SC_SAST_TOKEN: "secret"
           # SSC_LOGIN_EXTRA_OPTS: --socket-timeout=60s
-          # DEBRICKED_TOKEN: ${{secrets.DEBRICKED_TOKEN}}
+          DEBRICKED_TOKEN: "4597e587a166744e836de5fd73dd282a5e4242f8bc6e14c1"
           SSC_APPVERSION: "01vulnerableapp:dev"
           #DO_SETUP: true
           #SETUP_ACTION: https://scm.my.org/shared-repos/fcli-actions/setup.yaml
@@ -39,17 +39,6 @@ jobs:
           PACKAGE_EXTRA_OPTS: -oss -bt mvn
           SC_SAST_SENSOR_VERSION: 24.4.1
           # EXTRA_SC_SAST_SCAN_OPTS: 
-          # DO_WAIT: true
-          # DO_POLICY_CHECK: true
-          # POLICY_CHECK_ACTION: https://scm.my.org/shared-repos/fcli-actions/check-policy.yaml
-          # POLICY_CHECK_EXTRA_OPTS: --on-unsigned=ignore
-          # DO_JOB_SUMMARY: true
-          # JOB_SUMMARY_ACTION: https://scm.my.org/shared-repos/fcli-actions/job-summary.yaml
-          # JOB_SUMMARY_EXTRA_OPTS: --on-unsigned=ignore
-          # DO_PR_COMMENT: true
-          # PR_COMMENT_ACTION: https://scm.my.org/shared-repos/fcli-actions/github-pr-comment.yaml
-          # PR_COMMENT_EXTRA_OPTS: --on-unsigned=ignore
-          # DO_EXPORT: true
-          # EXPORT_ACTION: https://scm.my.org/shared-repos/fcli-actions/github-sast-report.yaml
-          # EXPORT_EXTRA_OPTS: --on-unsigned=ignore
-          # TOOL_DEFINITIONS: https://ftfy.mycompany.com/tool-definitions/v1/tool-definitions.yaml.zip
+          DO_WAIT: true
+          DO_POLICY_CHECK: true
+
