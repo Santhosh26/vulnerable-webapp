@@ -1,0 +1,5 @@
+com\example\vulnerable\controller\VulnerableController.class
+com\example\vulnerable\VulnerableWebApplication.class
+com\example\vulnerable\controller\AuthController.class
+com\example\vulnerable\config\SecurityConfig.class
+com\example\vulnerable\service\FileService.class
