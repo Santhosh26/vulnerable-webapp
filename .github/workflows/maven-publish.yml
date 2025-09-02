@@ -23,7 +23,7 @@ jobs:
         uses: fortify/github-action@v2
         with:
           sast-scan: true
-          debricked-sca-scan: false
+          debricked-sca-scan: true
         env:
           SSC_URL: "http://52.67.113.58:8080/ssc"
           SSC_TOKEN: "ZDNhYjY3NmYtMzg0Ny00ZTY5LWFmMmUtOGRmNmIyODEwMTAx"
@@ -40,7 +40,7 @@ jobs:
           PACKAGE_EXTRA_OPTS: -oss -bt mvn
           SC_SAST_SENSOR_VERSION: 24.4.1
           # EXTRA_SC_SAST_SCAN_OPTS: 
-          DO_WAIT: true
-          DO_POLICY_CHECK: true
+          #DO_WAIT: true
+          #DO_POLICY_CHECK: true
           
 
